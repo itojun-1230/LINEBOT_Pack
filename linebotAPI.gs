@@ -27,3 +27,19 @@ const sendMessage = (userid, message) => {
     }
   );
 }
+const getProfile = ( userId ) =>{
+  const API_URL = `https://api.line.me/v2/bot/profile/${userId}`;
+  const ACCESS_TOKEN = PropertiesService.getScriptProperties().getProperty("ACCESS_TOKEN");
+
+  const response = UrlFetchApp.fetch(
+    API_URL,
+    {  
+      "method": "get",
+      "headers": {
+        "Content-Type" : "application/json; charset=UTF-8",
+        'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      }
+    }
+  );
+  return JSON.parse(response.getContentText());
+}
