@@ -7,7 +7,7 @@ class init {
     /*[event] type
     {
       "type": string,
-        "message": {
+      "message": {
         "id": string,
         "quoteToken": string,
         "text": string
@@ -25,8 +25,8 @@ class init {
       "mode": string
     }
     */
-    this.event = event;
-  }
+  return event;
+}
   sendMessage(userid, message) {
     //apiルート
     const API_URL = "https://api.line.me/v2/bot/message/push";
@@ -54,7 +54,7 @@ class init {
   getProfile( userId ) {
     //apiルート
     const API_URL = `https://api.line.me/v2/bot/profile/${userId}`;
-
+    
     const response = UrlFetchApp.fetch(
       API_URL,
       {  
