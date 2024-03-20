@@ -1,9 +1,9 @@
-class init {
+class Init {
   constructor(token){
     this.token = token;
   }
   getEvent(e) {
-    const event = JSON.parse(e.postData.contents).events[0];
+    this.event = JSON.parse(e.postData.contents).events[0];
     /*[event] type
     {
       "type": string,
@@ -25,7 +25,6 @@ class init {
       "mode": string
     }
     */
-  return event;
 }
   sendMessage(userid, message) {
     //apiルート
@@ -77,3 +76,5 @@ class init {
     this.profile = JSON.parse(response.getContentText());
   }
 }
+
+this.init = Init;
