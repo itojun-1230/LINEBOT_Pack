@@ -1,9 +1,10 @@
-class init {
+class Init {
   constructor(token){
     this.token = token;
   }
   getEvent(e) {
-    const event = JSON.parse(e.postData.contents).events[0];
+    this.event = JSON.parse(e.postData.contents).events[0];
+    return this.event;
     /*[event] type
     {
       "type": string,
@@ -25,9 +26,8 @@ class init {
       "mode": string
     }
     */
-  return event;
 }
-  sendMessage(userid, message) {
+  send(userid, message) {
     //apiルート
     const API_URL = "https://api.line.me/v2/bot/message/push";
   
@@ -75,5 +75,8 @@ class init {
     }
     */
     this.profile = JSON.parse(response.getContentText());
+    return this.profile;
   }
 }
+
+this.init = Init;
